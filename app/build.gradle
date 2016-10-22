@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+    defaultConfig {
+        applicationId "com.example.elfatahwashere.myownpractice"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    repositories {
+        maven {
+            url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+        }
+    }
+
+    //----- Stetho
+    compile 'com.facebook.stetho:stetho:1.3.1'
+    compile 'com.uphyca:stetho_realm:0.9.0'
+
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
+
+    //----- Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile "com.squareup.retrofit2:adapter-rxjava:2.1.0"
+
+    //----- Logging
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+    compile 'com.squareup:otto:1.3.8'
+
+    //----- The core of Reactive Programming
+    compile 'io.reactivex:rxjava:1.1.10'
+    compile 'io.reactivex:rxandroid:1.2.1'
+
+    //----- Butterknife
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    //----- RecyclerView
+    compile 'com.jcodecraeer:xrecyclerview:1.2.7'
+
+    //----- Image Utils
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    //----- Nine Olds Animation
+    compile 'com.nineoldandroids:library:2.4.0'
+
+    //----- Dagger
+    apt 'com.google.dagger:dagger-compiler:2.5'
+    compile 'com.google.dagger:dagger:2.5'
+    provided 'javax.annotation:jsr250-api:1.0'
+
+    //----- Eventbuss
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    //----- Easy Permission Management
+    compile "com.karumi:dexter:2.2.2"
+
+    testCompile 'junit:junit:4.12'
+}
